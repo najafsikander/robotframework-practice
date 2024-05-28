@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.7.9 on darwin)" generated="20240528 16:58:23.499" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.7.9 on darwin)" generated="20240528 18:44:12.067" rpa="false" schemaversion="4">
 <suite id="s1" name="Lightbulb-Testing" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing">
 <suite id="s1-s1" name="Learn" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot">
 <test id="s1-s1-t1" name="Get All Devices" line="10">
@@ -7,120 +7,216 @@
 <var>${response}</var>
 <arg>${Base_URL}/devices</arg>
 <doc>Sends a GET request.</doc>
-<msg timestamp="20240528 16:58:23.592" level="INFO">GET Request : url=http://localhost:8080/devices 
+<msg timestamp="20240528 18:44:12.126" level="INFO">GET Request : url=http://localhost:8080/devices 
  path_url=/devices 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20240528 16:58:23.592" level="INFO">GET Response : url=http://localhost:8080/devices 
+<msg timestamp="20240528 18:44:12.126" level="INFO">GET Response : url=http://localhost:8080/devices 
  status=200, reason=OK 
- headers={'Date': 'Tue, 28 May 2024 12:58:23 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '86', 'Content-Type': 'text/html; charset=UTF-8'} 
+ headers={'Date': 'Tue, 28 May 2024 14:44:12 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '86', 'Content-Type': 'text/html; charset=UTF-8'} 
  body=[{"name": "bulb1", "ip": "192.168.100.10"}, {"name": "bulb2", "ip": "192.168.100.11"}] 
  </msg>
-<msg timestamp="20240528 16:58:23.592" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240528 16:58:23.584" endtime="20240528 16:58:23.592"/>
+<msg timestamp="20240528 18:44:12.126" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240528 18:44:12.116" endtime="20240528 18:44:12.126"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${status}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20240528 16:58:23.593" level="INFO">${status} = 200</msg>
-<status status="PASS" starttime="20240528 16:58:23.592" endtime="20240528 16:58:23.593"/>
+<msg timestamp="20240528 18:44:12.126" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240528 18:44:12.126" endtime="20240528 18:44:12.126"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240528 16:58:23.593" level="INFO">${content} = [{'name': 'bulb1', 'ip': '192.168.100.10'}, {'name': 'bulb2', 'ip': '192.168.100.11'}]</msg>
-<status status="PASS" starttime="20240528 16:58:23.593" endtime="20240528 16:58:23.593"/>
+<msg timestamp="20240528 18:44:12.127" level="INFO">${content} = [{'name': 'bulb1', 'ip': '192.168.100.10'}, {'name': 'bulb2', 'ip': '192.168.100.11'}]</msg>
+<status status="PASS" starttime="20240528 18:44:12.126" endtime="20240528 18:44:12.127"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Status is: ${status}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240528 16:58:23.593" endtime="20240528 16:58:23.593"/>
+<status status="PASS" starttime="20240528 18:44:12.127" endtime="20240528 18:44:12.127"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Content is: ${content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240528 16:58:23.593" endtime="20240528 16:58:23.594"/>
+<status status="PASS" starttime="20240528 18:44:12.127" endtime="20240528 18:44:12.127"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${status}==200</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240528 16:58:23.594" endtime="20240528 16:58:23.594"/>
+<status status="PASS" starttime="20240528 18:44:12.127" endtime="20240528 18:44:12.128"/>
+</kw>
+<kw name="Validate Device List">
+<arg>${content}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>isinstance(${device_list}, list)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240528 18:44:12.128" endtime="20240528 18:44:12.128"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
-<arg>isinstance(${content}, list)</arg>
+<arg>${device_list} is not None</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240528 16:58:23.594" endtime="20240528 16:58:23.594"/>
-</kw>
-<kw name="Should Be True" library="BuiltIn">
-<arg>${content} is not None</arg>
-<doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+<status status="PASS" starttime="20240528 18:44:12.128" endtime="20240528 18:44:12.128"/>
 </kw>
 <for flavor="IN">
-<var>${item}</var>
-<value>@{content}</value>
+<var>${device}</var>
+<value>@{device_list}</value>
 <iter>
-<var name="${item}">{'name': 'bulb1', 'ip': '192.168.100.10'}</var>
+<var name="${device}">{'name': 'bulb1', 'ip': '192.168.100.10'}</var>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${item}</arg>
+<arg>Device is: ${device}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.129"/>
 </kw>
+<kw name="Validate Device Object">
+<arg>${device}</arg>
 <kw name="Should Be True" library="BuiltIn">
-<arg>isinstance(${item}, dict)</arg>
+<arg>isinstance(${device_obj}, dict)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.129"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
-<arg>${item}</arg>
+<arg>${device_obj}</arg>
 <arg>name</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.129"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
-<arg>${item}</arg>
+<arg>${device_obj}</arg>
 <arg>ip</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.129"/>
 </kw>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.129"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.129"/>
 </iter>
 <iter>
-<var name="${item}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
+<var name="${device}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${item}</arg>
+<arg>Device is: ${device}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.130"/>
 </kw>
+<kw name="Validate Device Object">
+<arg>${device}</arg>
 <kw name="Should Be True" library="BuiltIn">
-<arg>isinstance(${item}, dict)</arg>
+<arg>isinstance(${device_obj}, dict)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.130" endtime="20240528 18:44:12.130"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
-<arg>${item}</arg>
+<arg>${device_obj}</arg>
 <arg>name</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.130" endtime="20240528 18:44:12.130"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
-<arg>${item}</arg>
+<arg>${device_obj}</arg>
 <arg>ip</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.130" endtime="20240528 18:44:12.130"/>
 </kw>
-<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.130" endtime="20240528 18:44:12.130"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.129" endtime="20240528 18:44:12.130"/>
 </iter>
-<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.128" endtime="20240528 18:44:12.130"/>
 </for>
-<status status="PASS" starttime="20240528 16:58:23.583" endtime="20240528 16:58:23.596"/>
+<status status="PASS" starttime="20240528 18:44:12.128" endtime="20240528 18:44:12.130"/>
+</kw>
+<kw name="Validate Device Name">
+<arg>${content}</arg>
+<arg>bulb1</arg>
+<kw name="Create List" library="BuiltIn">
+<var>${device_names}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20240528 18:44:12.131" level="INFO">${device_names} = []</msg>
+<status status="PASS" starttime="20240528 18:44:12.130" endtime="20240528 18:44:12.131"/>
+</kw>
+<for flavor="IN">
+<var>${device}</var>
+<value>@{device_list}</value>
+<iter>
+<var name="${device}">{'name': 'bulb1', 'ip': '192.168.100.10'}</var>
+<kw name="Append To List" library="Collections">
+<arg>${device_names}</arg>
+<arg>${device}[name]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.131"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.131"/>
+</iter>
+<iter>
+<var name="${device}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
+<kw name="Append To List" library="Collections">
+<arg>${device_names}</arg>
+<arg>${device}[name]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.131"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.131"/>
+</iter>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.131"/>
+</for>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${device_names}</arg>
+<arg>${expected_value}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.131"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.130" endtime="20240528 18:44:12.131"/>
+</kw>
+<kw name="Validate Device Name">
+<arg>${content}</arg>
+<arg>bulb2</arg>
+<kw name="Create List" library="BuiltIn">
+<var>${device_names}</var>
+<doc>Returns a list containing given items.</doc>
+<msg timestamp="20240528 18:44:12.132" level="INFO">${device_names} = []</msg>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.132"/>
+</kw>
+<for flavor="IN">
+<var>${device}</var>
+<value>@{device_list}</value>
+<iter>
+<var name="${device}">{'name': 'bulb1', 'ip': '192.168.100.10'}</var>
+<kw name="Append To List" library="Collections">
+<arg>${device_names}</arg>
+<arg>${device}[name]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20240528 18:44:12.132" endtime="20240528 18:44:12.132"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.132" endtime="20240528 18:44:12.132"/>
+</iter>
+<iter>
+<var name="${device}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
+<kw name="Append To List" library="Collections">
+<arg>${device_names}</arg>
+<arg>${device}[name]</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" starttime="20240528 18:44:12.132" endtime="20240528 18:44:12.132"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.132" endtime="20240528 18:44:12.132"/>
+</iter>
+<status status="PASS" starttime="20240528 18:44:12.132" endtime="20240528 18:44:12.132"/>
+</for>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${device_names}</arg>
+<arg>${expected_value}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20240528 18:44:12.132" endtime="20240528 18:44:12.132"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.131" endtime="20240528 18:44:12.132"/>
+</kw>
+<status status="PASS" starttime="20240528 18:44:12.115" endtime="20240528 18:44:12.132"/>
 </test>
-<status status="PASS" starttime="20240528 16:58:23.512" endtime="20240528 16:58:23.597"/>
+<status status="PASS" starttime="20240528 18:44:12.079" endtime="20240528 18:44:12.133"/>
 </suite>
-<status status="PASS" starttime="20240528 16:58:23.500" endtime="20240528 16:58:23.597"/>
+<status status="PASS" starttime="20240528 18:44:12.068" endtime="20240528 18:44:12.133"/>
 </suite>
 <statistics>
 <total>
