@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.7.9 on darwin)" generated="20240528 16:58:23.499" rpa="false" schemaversion="4">
+<suite id="s1" name="Lightbulb-Testing" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing">
+<suite id="s1-s1" name="Learn" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot">
+<test id="s1-s1-t1" name="Get All Devices" line="10">
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${Base_URL}/devices</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20240528 16:58:23.592" level="INFO">GET Request : url=http://localhost:8080/devices 
+ path_url=/devices 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240528 16:58:23.592" level="INFO">GET Response : url=http://localhost:8080/devices 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 28 May 2024 12:58:23 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '86', 'Content-Type': 'text/html; charset=UTF-8'} 
+ body=[{"name": "bulb1", "ip": "192.168.100.10"}, {"name": "bulb2", "ip": "192.168.100.11"}] 
+ </msg>
+<msg timestamp="20240528 16:58:23.592" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240528 16:58:23.584" endtime="20240528 16:58:23.592"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240528 16:58:23.593" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240528 16:58:23.592" endtime="20240528 16:58:23.593"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${content}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240528 16:58:23.593" level="INFO">${content} = [{'name': 'bulb1', 'ip': '192.168.100.10'}, {'name': 'bulb2', 'ip': '192.168.100.11'}]</msg>
+<status status="PASS" starttime="20240528 16:58:23.593" endtime="20240528 16:58:23.593"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Status is: ${status}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240528 16:58:23.593" endtime="20240528 16:58:23.593"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Content is: ${content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240528 16:58:23.593" endtime="20240528 16:58:23.594"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${status}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240528 16:58:23.594" endtime="20240528 16:58:23.594"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>isinstance(${content}, list)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240528 16:58:23.594" endtime="20240528 16:58:23.594"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${content} is not None</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+</kw>
+<for flavor="IN">
+<var>${item}</var>
+<value>@{content}</value>
+<iter>
+<var name="${item}">{'name': 'bulb1', 'ip': '192.168.100.10'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${item}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>isinstance(${item}, dict)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${item}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.595"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${item}</arg>
+<arg>ip</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.596"/>
+</kw>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.596"/>
+</iter>
+<iter>
+<var name="${item}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${item}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>isinstance(${item}, dict)</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${item}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${item}</arg>
+<arg>ip</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+</kw>
+<status status="PASS" starttime="20240528 16:58:23.596" endtime="20240528 16:58:23.596"/>
+</iter>
+<status status="PASS" starttime="20240528 16:58:23.595" endtime="20240528 16:58:23.596"/>
+</for>
+<status status="PASS" starttime="20240528 16:58:23.583" endtime="20240528 16:58:23.596"/>
+</test>
+<status status="PASS" starttime="20240528 16:58:23.512" endtime="20240528 16:58:23.597"/>
+</suite>
+<status status="PASS" starttime="20240528 16:58:23.500" endtime="20240528 16:58:23.597"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Lightbulb-Testing">Lightbulb-Testing</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Learn">Lightbulb-Testing.Learn</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
