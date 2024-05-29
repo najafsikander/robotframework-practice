@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-05-29T13:11:18.600776" rpa="false" schemaversion="5">
+<suite id="s1" name="Learn" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot">
+<test id="s1-t1" name="Connect To A Device" line="23">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-29T13:11:18.631203" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<var>${req_body}</var>
+<arg>ip=${target_device_ip}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-29T13:11:18.630610" elapsed="0.000752"/>
+</kw>
+<kw name="POST">
+<msg time="2024-05-29T13:11:18.632908" level="FAIL">No keyword with name 'POST' found.</msg>
+<var>${response}</var>
+<arg>${Base_URL}/connect</arg>
+<arg>json=${req_body}</arg>
+<status status="FAIL" start="2024-05-29T13:11:18.632706" elapsed="0.000299">No keyword with name 'POST' found.</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Result from api is:</arg>
+<arg>${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-05-29T13:11:18.633162" elapsed="0.000061"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Data from api is:</arg>
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-05-29T13:11:18.633297" elapsed="0.000045"/>
+</kw>
+<status status="FAIL" start="2024-05-29T13:11:18.629981" elapsed="0.003500">No keyword with name 'POST' found.</status>
+</test>
+<status status="FAIL" start="2024-05-29T13:11:18.601811" elapsed="0.031970"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Learn">Learn</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-05-29T13:11:18.615036" level="ERROR">Error in file '/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  /Users/zonedelivery/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/robotframework-intellij/lib/robotframework_debug_adapter
+  /Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing
+  /Users/zonedelivery/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/robotframework-intellij/lib
+  /Users/zonedelivery/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/robotframework-intellij/lib/robotframework_ls/vendored
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python39.zip
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload
+  /Users/zonedelivery/Library/Python/3.9/lib/python/site-packages
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages</msg>
+</errors>
+</robot>

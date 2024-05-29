@@ -2,9 +2,11 @@
 Library     RequestsLibrary
 Library    Collections
 Library    BuiltIn
+Resource    ./resources/validation.resource
 
 *** Variables ***
 ${Base_URL}    http://localhost:8080
+${target_device_ip}     192.168.100.10
 
 *** Test Cases ***
 Get All Devices
@@ -18,35 +20,10 @@ Get All Devices
     Validate Device Name    ${content}    bulb1
     Validate Device Name    ${content}    bulb2
 
-
-*** Keywords ***
-Validate Device List
-    [Arguments]    ${device_list}
-    Should Be True    isinstance(${device_list}, list)
-    Should Be True    ${device_list} is not None
-    FOR    ${device}    IN    @{device_list}
-        Log To Console    Device is: ${device}
-        Validate Device Object    ${device}
-    END
-
-Validate Device Object
-    [Arguments]    ${device_obj}
-    Should Be True    isinstance(${device_obj}, dict)
-    Dictionary Should Contain Key    ${device_obj}    name
-    Dictionary Should Contain Key    ${device_obj}    ip
-    Validate Data Type    ${device_obj}    name    str
-    Validate Data Type    ${device_obj}    ip    str
-
-Validate Data Type
-    [Arguments]    ${dictionary}    ${key}    ${expected_type}
-    ${value}    Get From Dictionary    ${dictionary}    ${key}
-    ${is_expected_type}=    Evaluate    isinstance(${value}, ${expected_type})
-    Should Be True    ${is_expected_type}    The key '${key}' is not of type ${expected_type.__name__}
-    
-Validate Device Name
-    [Arguments]    ${device_list}    ${expected_value}
-    ${device_names}    Create List
-    FOR    ${device}    IN    @{device_list}
-        Append To List    ${device_names}    ${device}[name]
-    END
-    List Should Contain Value    ${device_names}    ${expected_value}
+Connect To A Device
+    ${req_body}     Create Dictionary   ip=${target_device_ip}
+    ${response}     POST    ${Base_URL}/connect     json=${req_body}
+    Log To Console    Result from api is: ${response}
+    Log To Console    Data from api is: ${response.content}
+    ${content}  Set Variable    ${response.json()}
+    Check Succession Of API     ${content}
