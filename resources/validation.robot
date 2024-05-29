@@ -1,3 +1,5 @@
+*** Settings ***
+Library    Collections
 *** Keywords ***
 Validate Device List
     [Arguments]    ${device_list}
@@ -37,3 +39,19 @@ Check Succession Of API
     ${is_expected_type}=    Evaluate    isinstance(${value}, bool)
     Log To Console    Is expected type: ${is_expected_type}
     Should Be True    ${is_expected_type}==True
+
+Valide Check State API Response
+    [Arguments]     ${json_value}
+    Log To Console    Arguments received: ${json_value}
+    Should Be True    isinstance(${json_value}, dict)
+    Dictionary Should Contain Key    ${json_value}    name
+    Dictionary Should Contain Key    ${json_value}    ip
+    Dictionary Should Contain Key    ${json_value}    color
+    Dictionary Should Contain Key    ${json_value}    brightness
+    Should Be True    isinstance(${json_value}[brightness],float)
+    ${brightness}   Get From Dictionary    ${json_value}    brightness
+    ${brightness}    Convert To Integer    ${brightness}
+    IF    ${brightness} < 0 and $brightness > 10
+        [Return] null
+    END
+    Log To Console    Brightness is valid and value is: ${brightness}

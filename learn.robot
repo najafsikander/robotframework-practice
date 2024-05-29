@@ -2,7 +2,8 @@
 Library     RequestsLibrary
 Library    Collections
 Library    BuiltIn
-Resource    ./resources/validation.resource
+Resource    ./resources/validation.robot
+Resource    ./resources/setup.robot
 
 *** Variables ***
 ${Base_URL}    http://localhost:8080
@@ -21,9 +22,16 @@ Get All Devices
     Validate Device Name    ${content}    bulb2
 
 Connect To A Device
-    ${req_body}     Create Dictionary   ip=${target_device_ip}
-    ${response}     POST    ${Base_URL}/connect     json=${req_body}
-    Log To Console    Result from api is: ${response}
-    Log To Console    Data from api is: ${response.content}
-    ${content}  Set Variable    ${response.json()}
-    Check Succession Of API     ${content}
+     Setup Connection Via Ip
+     Log To Console    Connection is established
+
+Check State of Connected Device
+    [Setup]     Setup Connection Via Ip
+    Log To Console    Connection is establish
+    ${response}     GET     ${Base_URL}/state
+    ${status}       Convert To String    ${response.status_code}
+    ${content}      Set Variable    ${response.json()}
+    Should Be True    ${status}==200
+    Log To Console    Status Code is: ${status}
+    Log To Console    Content is: ${content}
+    Valide Check State API Response     ${content}
