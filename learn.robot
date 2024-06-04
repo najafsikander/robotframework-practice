@@ -41,19 +41,20 @@ Set Brightness of Connected Device
     Log To Console    Connection is established for test 4
     ${req_body}      Create Dictionary      brightness=5
     ${response}      POST     ${Base_URL}/brightness     data=${req_body}
-    Log To Console    Data from server: ${response}
-    ${status}       Convert To String    ${response.status_code}
-    ${content}      Set Variable    ${response.json()}
-    Check Succession Of API    ${content}    ${status}
-    Should Be True    ${content}[success]==True
+    Check Result Of Common Post API     ${response}     4
 
-Set Color of Connected Devce
+Set Color of Connected Device
     [Setup]     Setup Connection Via Ip
     Log To Console    Connection is established for test 5
     ${req_body}     Create Dictionary       color=#00ff00
     ${response}      POST    ${Base_URL}/color      data=${req_body}
-    Log To Console    Data from server: ${response.json()}
-    ${status}       Convert To String    ${response.status_code}
-    ${content}      Set Variable    ${response.json()}
-    Check Succession Of API    ${content}    ${status}
-    Should Be True    ${content}[success]==True
+    Check Result Of Common Post API     ${response}     5
+
+Set Name of Connected Device
+    [Setup]     Setup Connection Via Ip
+    Log To Console    Connection is established for test 6
+    ${req_body}     Create Dictionary       name='bulb1'
+    ${response}     POST    ${Base_URL}/name        data=${req_body}
+    Check Result Of Common Post API     ${response}     6
+
+

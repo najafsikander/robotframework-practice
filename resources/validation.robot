@@ -56,3 +56,11 @@ Valide Check State API Response
         [Return] null
     END
     Log To Console    Brightness is valid and value is: ${brightness}
+
+Check Result Of Common Post API
+    [Arguments]     ${response}     ${case_number}
+    Log To Console    Data from server for case ${case_number}: ${response.json()}
+    ${status}       Convert To String    ${response.status_code}
+    ${content}      Set Variable    ${response.json()}
+    Check Succession Of API    ${content}    ${status}
+    Should Be True    ${content}[success]==True
