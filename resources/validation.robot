@@ -33,7 +33,8 @@ Validate Device Name
     List Should Contain Value    ${device_names}    ${expected_value}
 
 Check Succession Of API
-    [Arguments]     ${json_value}
+    [Arguments]     ${json_value}    ${status_code}
+    Should Be True    ${status_code}==200
     Dictionary Should Contain Key    ${json_value}    success
     ${value}    Get From Dictionary    ${json_value}    success
     ${is_expected_type}=    Evaluate    isinstance(${value}, bool)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.7.9 on darwin)" generated="20240604 15:59:21.775" rpa="false" schemaversion="4">
+<robot generator="Robot 6.1.1 (Python 3.7.9 on darwin)" generated="20240604 16:53:14.991" rpa="false" schemaversion="4">
 <suite id="s1" name="Lightbulb-Testing" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing">
 <suite id="s1-s1" name="Learn" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot">
 <test id="s1-s1-t1" name="Get All Devices" line="13">
@@ -7,59 +7,59 @@
 <var>${response}</var>
 <arg>${Base_URL}/devices</arg>
 <doc>Sends a GET request.</doc>
-<msg timestamp="20240604 15:59:21.849" level="INFO">GET Request : url=http://localhost:8080/devices 
+<msg timestamp="20240604 16:53:15.076" level="INFO">GET Request : url=http://localhost:8080/devices 
  path_url=/devices 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20240604 15:59:21.849" level="INFO">GET Response : url=http://localhost:8080/devices 
+<msg timestamp="20240604 16:53:15.076" level="INFO">GET Response : url=http://localhost:8080/devices 
  status=200, reason=OK 
- headers={'Date': 'Tue, 04 Jun 2024 11:59:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '86', 'Content-Type': 'text/html; charset=UTF-8'} 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '86', 'Content-Type': 'text/html; charset=UTF-8'} 
  body=[{"name": "bulb1", "ip": "192.168.100.10"}, {"name": "bulb2", "ip": "192.168.100.11"}] 
  </msg>
-<msg timestamp="20240604 15:59:21.849" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240604 15:59:21.841" endtime="20240604 15:59:21.849"/>
+<msg timestamp="20240604 16:53:15.076" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.067" endtime="20240604 16:53:15.076"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${status}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20240604 15:59:21.850" level="INFO">${status} = 200</msg>
-<status status="PASS" starttime="20240604 15:59:21.849" endtime="20240604 15:59:21.850"/>
+<msg timestamp="20240604 16:53:15.077" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.076" endtime="20240604 16:53:15.077"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240604 15:59:21.850" level="INFO">${content} = [{'name': 'bulb1', 'ip': '192.168.100.10'}, {'name': 'bulb2', 'ip': '192.168.100.11'}]</msg>
-<status status="PASS" starttime="20240604 15:59:21.850" endtime="20240604 15:59:21.850"/>
+<msg timestamp="20240604 16:53:15.077" level="INFO">${content} = [{'name': 'bulb1', 'ip': '192.168.100.10'}, {'name': 'bulb2', 'ip': '192.168.100.11'}]</msg>
+<status status="PASS" starttime="20240604 16:53:15.077" endtime="20240604 16:53:15.077"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Status is: ${status}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.850" endtime="20240604 15:59:21.851"/>
+<status status="PASS" starttime="20240604 16:53:15.077" endtime="20240604 16:53:15.077"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Content is: ${content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.851" endtime="20240604 15:59:21.851"/>
+<status status="PASS" starttime="20240604 16:53:15.077" endtime="20240604 16:53:15.078"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${status}==200</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.851" endtime="20240604 15:59:21.851"/>
+<status status="PASS" starttime="20240604 16:53:15.078" endtime="20240604 16:53:15.078"/>
 </kw>
 <kw name="Validate Device List" library="validation">
 <arg>${content}</arg>
 <kw name="Should Be True" library="BuiltIn">
 <arg>isinstance(${device_list}, list)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.851" endtime="20240604 15:59:21.852"/>
+<status status="PASS" starttime="20240604 16:53:15.078" endtime="20240604 16:53:15.079"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${device_list} is not None</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.852" endtime="20240604 15:59:21.852"/>
+<status status="PASS" starttime="20240604 16:53:15.079" endtime="20240604 16:53:15.079"/>
 </kw>
 <for flavor="IN">
 <var>${device}</var>
@@ -69,64 +69,64 @@
 <kw name="Log To Console" library="BuiltIn">
 <arg>Device is: ${device}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.852" endtime="20240604 15:59:21.852"/>
+<status status="PASS" starttime="20240604 16:53:15.079" endtime="20240604 16:53:15.079"/>
 </kw>
 <kw name="Validate Device Object" library="validation">
 <arg>${device}</arg>
 <kw name="Should Be True" library="BuiltIn">
 <arg>isinstance(${device_obj}, dict)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.853" endtime="20240604 15:59:21.853"/>
+<status status="PASS" starttime="20240604 16:53:15.079" endtime="20240604 16:53:15.080"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${device_obj}</arg>
 <arg>name</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.853" endtime="20240604 15:59:21.853"/>
+<status status="PASS" starttime="20240604 16:53:15.080" endtime="20240604 16:53:15.080"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${device_obj}</arg>
 <arg>ip</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.853" endtime="20240604 15:59:21.853"/>
+<status status="PASS" starttime="20240604 16:53:15.080" endtime="20240604 16:53:15.080"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.852" endtime="20240604 15:59:21.853"/>
+<status status="PASS" starttime="20240604 16:53:15.079" endtime="20240604 16:53:15.080"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.852" endtime="20240604 15:59:21.853"/>
+<status status="PASS" starttime="20240604 16:53:15.079" endtime="20240604 16:53:15.080"/>
 </iter>
 <iter>
 <var name="${device}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Device is: ${device}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.853" endtime="20240604 15:59:21.853"/>
+<status status="PASS" starttime="20240604 16:53:15.080" endtime="20240604 16:53:15.080"/>
 </kw>
 <kw name="Validate Device Object" library="validation">
 <arg>${device}</arg>
 <kw name="Should Be True" library="BuiltIn">
 <arg>isinstance(${device_obj}, dict)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.854" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.080" endtime="20240604 16:53:15.081"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${device_obj}</arg>
 <arg>name</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.854" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.081" endtime="20240604 16:53:15.081"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${device_obj}</arg>
 <arg>ip</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.854" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.081" endtime="20240604 16:53:15.081"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.853" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.080" endtime="20240604 16:53:15.081"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.853" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.080" endtime="20240604 16:53:15.081"/>
 </iter>
-<status status="PASS" starttime="20240604 15:59:21.852" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.079" endtime="20240604 16:53:15.081"/>
 </for>
-<status status="PASS" starttime="20240604 15:59:21.851" endtime="20240604 15:59:21.854"/>
+<status status="PASS" starttime="20240604 16:53:15.078" endtime="20240604 16:53:15.081"/>
 </kw>
 <kw name="Validate Device Name" library="validation">
 <arg>${content}</arg>
@@ -134,8 +134,8 @@
 <kw name="Create List" library="BuiltIn">
 <var>${device_names}</var>
 <doc>Returns a list containing given items.</doc>
-<msg timestamp="20240604 15:59:21.854" level="INFO">${device_names} = []</msg>
-<status status="PASS" starttime="20240604 15:59:21.854" endtime="20240604 15:59:21.854"/>
+<msg timestamp="20240604 16:53:15.081" level="INFO">${device_names} = []</msg>
+<status status="PASS" starttime="20240604 16:53:15.081" endtime="20240604 16:53:15.081"/>
 </kw>
 <for flavor="IN">
 <var>${device}</var>
@@ -146,9 +146,9 @@
 <arg>${device_names}</arg>
 <arg>${device}[name]</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.855" endtime="20240604 15:59:21.855"/>
+<status status="PASS" starttime="20240604 16:53:15.082" endtime="20240604 16:53:15.082"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.855" endtime="20240604 15:59:21.855"/>
+<status status="PASS" starttime="20240604 16:53:15.081" endtime="20240604 16:53:15.082"/>
 </iter>
 <iter>
 <var name="${device}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
@@ -156,19 +156,19 @@
 <arg>${device_names}</arg>
 <arg>${device}[name]</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.855" endtime="20240604 15:59:21.855"/>
+<status status="PASS" starttime="20240604 16:53:15.082" endtime="20240604 16:53:15.082"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.855" endtime="20240604 15:59:21.855"/>
+<status status="PASS" starttime="20240604 16:53:15.082" endtime="20240604 16:53:15.082"/>
 </iter>
-<status status="PASS" starttime="20240604 15:59:21.855" endtime="20240604 15:59:21.855"/>
+<status status="PASS" starttime="20240604 16:53:15.081" endtime="20240604 16:53:15.082"/>
 </for>
 <kw name="List Should Contain Value" library="Collections">
 <arg>${device_names}</arg>
 <arg>${expected_value}</arg>
 <doc>Fails if the ``value`` is not found from ``list``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.855" endtime="20240604 15:59:21.855"/>
+<status status="PASS" starttime="20240604 16:53:15.082" endtime="20240604 16:53:15.082"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.854" endtime="20240604 15:59:21.856"/>
+<status status="PASS" starttime="20240604 16:53:15.081" endtime="20240604 16:53:15.082"/>
 </kw>
 <kw name="Validate Device Name" library="validation">
 <arg>${content}</arg>
@@ -176,8 +176,8 @@
 <kw name="Create List" library="BuiltIn">
 <var>${device_names}</var>
 <doc>Returns a list containing given items.</doc>
-<msg timestamp="20240604 15:59:21.856" level="INFO">${device_names} = []</msg>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.856"/>
+<msg timestamp="20240604 16:53:15.083" level="INFO">${device_names} = []</msg>
+<status status="PASS" starttime="20240604 16:53:15.082" endtime="20240604 16:53:15.083"/>
 </kw>
 <for flavor="IN">
 <var>${device}</var>
@@ -188,9 +188,9 @@
 <arg>${device_names}</arg>
 <arg>${device}[name]</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.856"/>
+<status status="PASS" starttime="20240604 16:53:15.083" endtime="20240604 16:53:15.083"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.856"/>
+<status status="PASS" starttime="20240604 16:53:15.083" endtime="20240604 16:53:15.083"/>
 </iter>
 <iter>
 <var name="${device}">{'name': 'bulb2', 'ip': '192.168.100.11'}</var>
@@ -198,21 +198,21 @@
 <arg>${device_names}</arg>
 <arg>${device}[name]</arg>
 <doc>Adds ``values`` to the end of ``list``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.857"/>
+<status status="PASS" starttime="20240604 16:53:15.083" endtime="20240604 16:53:15.083"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.857"/>
+<status status="PASS" starttime="20240604 16:53:15.083" endtime="20240604 16:53:15.083"/>
 </iter>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.857"/>
+<status status="PASS" starttime="20240604 16:53:15.083" endtime="20240604 16:53:15.083"/>
 </for>
 <kw name="List Should Contain Value" library="Collections">
 <arg>${device_names}</arg>
 <arg>${expected_value}</arg>
 <doc>Fails if the ``value`` is not found from ``list``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.857" endtime="20240604 15:59:21.857"/>
+<status status="PASS" starttime="20240604 16:53:15.083" endtime="20240604 16:53:15.083"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.856" endtime="20240604 15:59:21.857"/>
+<status status="PASS" starttime="20240604 16:53:15.082" endtime="20240604 16:53:15.083"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.841" endtime="20240604 15:59:21.857"/>
+<status status="PASS" starttime="20240604 16:53:15.067" endtime="20240604 16:53:15.083"/>
 </test>
 <test id="s1-s1-t2" name="Connect To A Device" line="24">
 <kw name="Setup Connection Via Ip" library="setup">
@@ -220,87 +220,100 @@
 <var>${req_body}</var>
 <arg>ip=${target_device_ip}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240604 15:59:21.858" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
-<status status="PASS" starttime="20240604 15:59:21.857" endtime="20240604 15:59:21.858"/>
+<msg timestamp="20240604 16:53:15.084" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<status status="PASS" starttime="20240604 16:53:15.084" endtime="20240604 16:53:15.084"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${Base_URL}/connect</arg>
 <arg>json=${req_body}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20240604 15:59:21.861" level="INFO">POST Request : url=http://localhost:8080/connect 
+<msg timestamp="20240604 16:53:15.088" level="INFO">POST Request : url=http://localhost:8080/connect 
  path_url=/connect 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/json'} 
  body=b'{"ip": "192.168.100.10"}' 
  </msg>
-<msg timestamp="20240604 15:59:21.861" level="INFO">POST Response : url=http://localhost:8080/connect 
+<msg timestamp="20240604 16:53:15.088" level="INFO">POST Response : url=http://localhost:8080/connect 
  status=200, reason=OK 
- headers={'Date': 'Tue, 04 Jun 2024 11:59:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
  body={"success": false} 
  </msg>
-<msg timestamp="20240604 15:59:21.861" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240604 15:59:21.858" endtime="20240604 15:59:21.861"/>
+<msg timestamp="20240604 16:53:15.088" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.084" endtime="20240604 16:53:15.088"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Result from api is: ${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.862" endtime="20240604 15:59:21.862"/>
+<status status="PASS" starttime="20240604 16:53:15.088" endtime="20240604 16:53:15.088"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Data from api is: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.862" endtime="20240604 15:59:21.862"/>
+<status status="PASS" starttime="20240604 16:53:15.089" endtime="20240604 16:53:15.089"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240604 16:53:15.089" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.089" endtime="20240604 16:53:15.089"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240604 15:59:21.863" level="INFO">${content} = {'success': False}</msg>
-<status status="PASS" starttime="20240604 15:59:21.862" endtime="20240604 15:59:21.863"/>
+<msg timestamp="20240604 16:53:15.090" level="INFO">${content} = {'success': False}</msg>
+<status status="PASS" starttime="20240604 16:53:15.089" endtime="20240604 16:53:15.090"/>
 </kw>
 <kw name="Check Succession Of API" library="validation">
 <arg>${content}</arg>
+<arg>${status}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${status_code}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.090" endtime="20240604 16:53:15.090"/>
+</kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.863" endtime="20240604 15:59:21.863"/>
+<status status="PASS" starttime="20240604 16:53:15.090" endtime="20240604 16:53:15.090"/>
 </kw>
 <kw name="Get From Dictionary" library="Collections">
 <var>${value}</var>
 <arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240604 15:59:21.863" level="INFO">${value} = False</msg>
-<status status="PASS" starttime="20240604 15:59:21.863" endtime="20240604 15:59:21.863"/>
+<msg timestamp="20240604 16:53:15.090" level="INFO">${value} = False</msg>
+<status status="PASS" starttime="20240604 16:53:15.090" endtime="20240604 16:53:15.090"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>${is_expected_type}</var>
 <arg>isinstance(${value}, bool)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20240604 15:59:21.863" level="INFO">${is_expected_type} = True</msg>
-<status status="PASS" starttime="20240604 15:59:21.863" endtime="20240604 15:59:21.863"/>
+<msg timestamp="20240604 16:53:15.091" level="INFO">${is_expected_type} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.090" endtime="20240604 16:53:15.091"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Is expected type: ${is_expected_type}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.864" endtime="20240604 15:59:21.864"/>
+<status status="PASS" starttime="20240604 16:53:15.091" endtime="20240604 16:53:15.091"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${is_expected_type}==True</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.864" endtime="20240604 15:59:21.864"/>
+<status status="PASS" starttime="20240604 16:53:15.091" endtime="20240604 16:53:15.091"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.863" endtime="20240604 15:59:21.864"/>
+<status status="PASS" starttime="20240604 16:53:15.090" endtime="20240604 16:53:15.091"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.857" endtime="20240604 15:59:21.864"/>
+<status status="PASS" starttime="20240604 16:53:15.084" endtime="20240604 16:53:15.091"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Connection is established</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.864" endtime="20240604 15:59:21.864"/>
+<status status="PASS" starttime="20240604 16:53:15.091" endtime="20240604 16:53:15.091"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.857" endtime="20240604 15:59:21.864"/>
+<status status="PASS" starttime="20240604 16:53:15.084" endtime="20240604 16:53:15.091"/>
 </test>
 <test id="s1-s1-t3" name="Check State of Connected Device" line="28">
 <kw name="Setup Connection Via Ip" library="setup" type="SETUP">
@@ -308,205 +321,218 @@
 <var>${req_body}</var>
 <arg>ip=${target_device_ip}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240604 15:59:21.865" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
-<status status="PASS" starttime="20240604 15:59:21.865" endtime="20240604 15:59:21.865"/>
+<msg timestamp="20240604 16:53:15.092" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<status status="PASS" starttime="20240604 16:53:15.092" endtime="20240604 16:53:15.092"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${Base_URL}/connect</arg>
 <arg>json=${req_body}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20240604 15:59:21.869" level="INFO">POST Request : url=http://localhost:8080/connect 
+<msg timestamp="20240604 16:53:15.096" level="INFO">POST Request : url=http://localhost:8080/connect 
  path_url=/connect 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/json'} 
  body=b'{"ip": "192.168.100.10"}' 
  </msg>
-<msg timestamp="20240604 15:59:21.869" level="INFO">POST Response : url=http://localhost:8080/connect 
+<msg timestamp="20240604 16:53:15.096" level="INFO">POST Response : url=http://localhost:8080/connect 
  status=200, reason=OK 
- headers={'Date': 'Tue, 04 Jun 2024 11:59:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
  body={"success": false} 
  </msg>
-<msg timestamp="20240604 15:59:21.869" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240604 15:59:21.865" endtime="20240604 15:59:21.869"/>
+<msg timestamp="20240604 16:53:15.096" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.092" endtime="20240604 16:53:15.096"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Result from api is: ${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.869" endtime="20240604 15:59:21.869"/>
+<status status="PASS" starttime="20240604 16:53:15.096" endtime="20240604 16:53:15.096"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Data from api is: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.869" endtime="20240604 15:59:21.869"/>
+<status status="PASS" starttime="20240604 16:53:15.096" endtime="20240604 16:53:15.097"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240604 16:53:15.097" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.097" endtime="20240604 16:53:15.097"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240604 15:59:21.870" level="INFO">${content} = {'success': False}</msg>
-<status status="PASS" starttime="20240604 15:59:21.870" endtime="20240604 15:59:21.870"/>
+<msg timestamp="20240604 16:53:15.098" level="INFO">${content} = {'success': False}</msg>
+<status status="PASS" starttime="20240604 16:53:15.097" endtime="20240604 16:53:15.098"/>
 </kw>
 <kw name="Check Succession Of API" library="validation">
 <arg>${content}</arg>
+<arg>${status}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${status_code}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.098" endtime="20240604 16:53:15.098"/>
+</kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.870" endtime="20240604 15:59:21.870"/>
+<status status="PASS" starttime="20240604 16:53:15.098" endtime="20240604 16:53:15.099"/>
 </kw>
 <kw name="Get From Dictionary" library="Collections">
 <var>${value}</var>
 <arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240604 15:59:21.870" level="INFO">${value} = False</msg>
-<status status="PASS" starttime="20240604 15:59:21.870" endtime="20240604 15:59:21.870"/>
+<msg timestamp="20240604 16:53:15.099" level="INFO">${value} = False</msg>
+<status status="PASS" starttime="20240604 16:53:15.099" endtime="20240604 16:53:15.099"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>${is_expected_type}</var>
 <arg>isinstance(${value}, bool)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20240604 15:59:21.871" level="INFO">${is_expected_type} = True</msg>
-<status status="PASS" starttime="20240604 15:59:21.870" endtime="20240604 15:59:21.871"/>
+<msg timestamp="20240604 16:53:15.099" level="INFO">${is_expected_type} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.099" endtime="20240604 16:53:15.099"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Is expected type: ${is_expected_type}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.871" endtime="20240604 15:59:21.871"/>
+<status status="PASS" starttime="20240604 16:53:15.099" endtime="20240604 16:53:15.099"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${is_expected_type}==True</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.871" endtime="20240604 15:59:21.871"/>
+<status status="PASS" starttime="20240604 16:53:15.099" endtime="20240604 16:53:15.099"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.870" endtime="20240604 15:59:21.871"/>
+<status status="PASS" starttime="20240604 16:53:15.098" endtime="20240604 16:53:15.099"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.865" endtime="20240604 15:59:21.871"/>
+<status status="PASS" starttime="20240604 16:53:15.092" endtime="20240604 16:53:15.100"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Connection is establish</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.871" endtime="20240604 15:59:21.871"/>
+<status status="PASS" starttime="20240604 16:53:15.100" endtime="20240604 16:53:15.100"/>
 </kw>
 <kw name="GET" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${Base_URL}/state</arg>
 <doc>Sends a GET request.</doc>
-<msg timestamp="20240604 15:59:21.874" level="INFO">GET Request : url=http://localhost:8080/state 
+<msg timestamp="20240604 16:53:15.102" level="INFO">GET Request : url=http://localhost:8080/state 
  path_url=/state 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20240604 15:59:21.874" level="INFO">GET Response : url=http://localhost:8080/state 
+<msg timestamp="20240604 16:53:15.102" level="INFO">GET Response : url=http://localhost:8080/state 
  status=200, reason=OK 
- headers={'Date': 'Tue, 04 Jun 2024 11:59:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '80', 'Content-Type': 'text/html; charset=UTF-8'} 
- body={"name": "bulb1", "ip": "192.168.100.10", "color": "#ffffff", "brightness": 5.0} 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '80', 'Content-Type': 'text/html; charset=UTF-8'} 
+ body={"name": "bulb1", "ip": "192.168.100.10", "color": "#00ff00", "brightness": 5.0} 
  </msg>
-<msg timestamp="20240604 15:59:21.874" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240604 15:59:21.872" endtime="20240604 15:59:21.874"/>
+<msg timestamp="20240604 16:53:15.102" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.100" endtime="20240604 16:53:15.102"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${status}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20240604 15:59:21.875" level="INFO">${status} = 200</msg>
-<status status="PASS" starttime="20240604 15:59:21.874" endtime="20240604 15:59:21.875"/>
+<msg timestamp="20240604 16:53:15.103" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.103" endtime="20240604 16:53:15.103"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240604 15:59:21.875" level="INFO">${content} = {'name': 'bulb1', 'ip': '192.168.100.10', 'color': '#ffffff', 'brightness': 5.0}</msg>
-<status status="PASS" starttime="20240604 15:59:21.875" endtime="20240604 15:59:21.875"/>
+<msg timestamp="20240604 16:53:15.104" level="INFO">${content} = {'name': 'bulb1', 'ip': '192.168.100.10', 'color': '#00ff00', 'brightness': 5.0}</msg>
+<status status="PASS" starttime="20240604 16:53:15.103" endtime="20240604 16:53:15.104"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${status}==200</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.876" endtime="20240604 15:59:21.876"/>
+<status status="PASS" starttime="20240604 16:53:15.104" endtime="20240604 16:53:15.104"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Status Code is: ${status}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.876" endtime="20240604 15:59:21.876"/>
+<status status="PASS" starttime="20240604 16:53:15.104" endtime="20240604 16:53:15.104"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Content is: ${content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.876" endtime="20240604 15:59:21.876"/>
+<status status="PASS" starttime="20240604 16:53:15.104" endtime="20240604 16:53:15.104"/>
 </kw>
 <kw name="Valide Check State API Response" library="validation">
 <arg>${content}</arg>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Arguments received: ${json_value}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.876" endtime="20240604 15:59:21.877"/>
+<status status="PASS" starttime="20240604 16:53:15.104" endtime="20240604 16:53:15.105"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>isinstance(${json_value}, dict)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.877" endtime="20240604 15:59:21.877"/>
+<status status="PASS" starttime="20240604 16:53:15.105" endtime="20240604 16:53:15.105"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>name</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.877" endtime="20240604 15:59:21.877"/>
+<status status="PASS" starttime="20240604 16:53:15.105" endtime="20240604 16:53:15.105"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>ip</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.877" endtime="20240604 15:59:21.877"/>
+<status status="PASS" starttime="20240604 16:53:15.105" endtime="20240604 16:53:15.105"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>color</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.877" endtime="20240604 15:59:21.877"/>
+<status status="PASS" starttime="20240604 16:53:15.105" endtime="20240604 16:53:15.105"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>brightness</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.877" endtime="20240604 15:59:21.877"/>
+<status status="PASS" starttime="20240604 16:53:15.105" endtime="20240604 16:53:15.105"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>isinstance(${json_value}[brightness],float)</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.877" endtime="20240604 15:59:21.878"/>
+<status status="PASS" starttime="20240604 16:53:15.105" endtime="20240604 16:53:15.106"/>
 </kw>
 <kw name="Get From Dictionary" library="Collections">
 <var>${brightness}</var>
 <arg>${json_value}</arg>
 <arg>brightness</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240604 15:59:21.878" level="INFO">${brightness} = 5.0</msg>
-<status status="PASS" starttime="20240604 15:59:21.878" endtime="20240604 15:59:21.878"/>
+<msg timestamp="20240604 16:53:15.106" level="INFO">${brightness} = 5.0</msg>
+<status status="PASS" starttime="20240604 16:53:15.106" endtime="20240604 16:53:15.106"/>
 </kw>
 <kw name="Convert To Integer" library="BuiltIn">
 <var>${brightness}</var>
 <arg>${brightness}</arg>
 <doc>Converts the given item to an integer number.</doc>
-<msg timestamp="20240604 15:59:21.878" level="INFO">${brightness} = 5</msg>
-<status status="PASS" starttime="20240604 15:59:21.878" endtime="20240604 15:59:21.878"/>
+<msg timestamp="20240604 16:53:15.106" level="INFO">${brightness} = 5</msg>
+<status status="PASS" starttime="20240604 16:53:15.106" endtime="20240604 16:53:15.106"/>
 </kw>
 <if>
 <branch type="IF" condition="${brightness} &lt; 0 and $brightness &gt; 10">
 <kw name="[Return] null">
-<status status="NOT RUN" starttime="20240604 15:59:21.883" endtime="20240604 15:59:21.883"/>
+<status status="NOT RUN" starttime="20240604 16:53:15.110" endtime="20240604 16:53:15.110"/>
 </kw>
-<status status="NOT RUN" starttime="20240604 15:59:21.878" endtime="20240604 15:59:21.883"/>
+<status status="NOT RUN" starttime="20240604 16:53:15.106" endtime="20240604 16:53:15.110"/>
 </branch>
-<status status="PASS" starttime="20240604 15:59:21.878" endtime="20240604 15:59:21.883"/>
+<status status="PASS" starttime="20240604 16:53:15.106" endtime="20240604 16:53:15.110"/>
 </if>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Brightness is valid and value is: ${brightness}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.883" endtime="20240604 15:59:21.883"/>
+<status status="PASS" starttime="20240604 16:53:15.110" endtime="20240604 16:53:15.110"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.876" endtime="20240604 15:59:21.883"/>
+<status status="PASS" starttime="20240604 16:53:15.104" endtime="20240604 16:53:15.110"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.864" endtime="20240604 15:59:21.883"/>
+<status status="PASS" starttime="20240604 16:53:15.091" endtime="20240604 16:53:15.110"/>
 </test>
 <test id="s1-s1-t4" name="Set Brightness of Connected Device" line="39">
 <kw name="Setup Connection Via Ip" library="setup" type="SETUP">
@@ -514,171 +540,395 @@
 <var>${req_body}</var>
 <arg>ip=${target_device_ip}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240604 15:59:21.884" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
-<status status="PASS" starttime="20240604 15:59:21.884" endtime="20240604 15:59:21.884"/>
+<msg timestamp="20240604 16:53:15.111" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<status status="PASS" starttime="20240604 16:53:15.111" endtime="20240604 16:53:15.111"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${Base_URL}/connect</arg>
 <arg>json=${req_body}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20240604 15:59:21.887" level="INFO">POST Request : url=http://localhost:8080/connect 
+<msg timestamp="20240604 16:53:15.114" level="INFO">POST Request : url=http://localhost:8080/connect 
  path_url=/connect 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/json'} 
  body=b'{"ip": "192.168.100.10"}' 
  </msg>
-<msg timestamp="20240604 15:59:21.887" level="INFO">POST Response : url=http://localhost:8080/connect 
+<msg timestamp="20240604 16:53:15.114" level="INFO">POST Response : url=http://localhost:8080/connect 
  status=200, reason=OK 
- headers={'Date': 'Tue, 04 Jun 2024 11:59:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
  body={"success": false} 
  </msg>
-<msg timestamp="20240604 15:59:21.887" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240604 15:59:21.884" endtime="20240604 15:59:21.887"/>
+<msg timestamp="20240604 16:53:15.114" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.111" endtime="20240604 16:53:15.114"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Result from api is: ${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.887" endtime="20240604 15:59:21.887"/>
+<status status="PASS" starttime="20240604 16:53:15.114" endtime="20240604 16:53:15.114"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Data from api is: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.887" endtime="20240604 15:59:21.888"/>
+<status status="PASS" starttime="20240604 16:53:15.114" endtime="20240604 16:53:15.114"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240604 16:53:15.115" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.114" endtime="20240604 16:53:15.115"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240604 15:59:21.888" level="INFO">${content} = {'success': False}</msg>
-<status status="PASS" starttime="20240604 15:59:21.888" endtime="20240604 15:59:21.888"/>
+<msg timestamp="20240604 16:53:15.115" level="INFO">${content} = {'success': False}</msg>
+<status status="PASS" starttime="20240604 16:53:15.115" endtime="20240604 16:53:15.115"/>
 </kw>
 <kw name="Check Succession Of API" library="validation">
 <arg>${content}</arg>
+<arg>${status}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${status_code}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.115" endtime="20240604 16:53:15.116"/>
+</kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
 <arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.889" endtime="20240604 15:59:21.889"/>
+<status status="PASS" starttime="20240604 16:53:15.116" endtime="20240604 16:53:15.116"/>
 </kw>
 <kw name="Get From Dictionary" library="Collections">
 <var>${value}</var>
 <arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20240604 15:59:21.889" level="INFO">${value} = False</msg>
-<status status="PASS" starttime="20240604 15:59:21.889" endtime="20240604 15:59:21.889"/>
+<msg timestamp="20240604 16:53:15.116" level="INFO">${value} = False</msg>
+<status status="PASS" starttime="20240604 16:53:15.116" endtime="20240604 16:53:15.116"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>${is_expected_type}</var>
 <arg>isinstance(${value}, bool)</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20240604 15:59:21.889" level="INFO">${is_expected_type} = True</msg>
-<status status="PASS" starttime="20240604 15:59:21.889" endtime="20240604 15:59:21.889"/>
+<msg timestamp="20240604 16:53:15.116" level="INFO">${is_expected_type} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.116" endtime="20240604 16:53:15.116"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Is expected type: ${is_expected_type}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.889" endtime="20240604 15:59:21.889"/>
+<status status="PASS" starttime="20240604 16:53:15.116" endtime="20240604 16:53:15.116"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${is_expected_type}==True</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.889" endtime="20240604 15:59:21.890"/>
+<status status="PASS" starttime="20240604 16:53:15.116" endtime="20240604 16:53:15.117"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.888" endtime="20240604 15:59:21.890"/>
+<status status="PASS" starttime="20240604 16:53:15.115" endtime="20240604 16:53:15.117"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.884" endtime="20240604 15:59:21.890"/>
+<status status="PASS" starttime="20240604 16:53:15.111" endtime="20240604 16:53:15.117"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Connection is established for test 4</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.890" endtime="20240604 15:59:21.890"/>
+<status status="PASS" starttime="20240604 16:53:15.117" endtime="20240604 16:53:15.117"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${req_body}</var>
 <arg>brightness=5</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20240604 15:59:21.890" level="INFO">${req_body} = {'brightness': '5'}</msg>
-<status status="PASS" starttime="20240604 15:59:21.890" endtime="20240604 15:59:21.890"/>
+<msg timestamp="20240604 16:53:15.117" level="INFO">${req_body} = {'brightness': '5'}</msg>
+<status status="PASS" starttime="20240604 16:53:15.117" endtime="20240604 16:53:15.117"/>
 </kw>
 <kw name="POST" library="RequestsLibrary">
 <var>${response}</var>
 <arg>${Base_URL}/brightness</arg>
 <arg>data=${req_body}</arg>
 <doc>Sends a POST request.</doc>
-<msg timestamp="20240604 15:59:21.893" level="INFO">POST Request : url=http://localhost:8080/brightness 
+<msg timestamp="20240604 16:53:15.121" level="INFO">POST Request : url=http://localhost:8080/brightness 
  path_url=/brightness 
  headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '12', 'Content-Type': 'application/x-www-form-urlencoded'} 
  body=brightness=5 
  </msg>
-<msg timestamp="20240604 15:59:21.893" level="INFO">POST Response : url=http://localhost:8080/brightness 
+<msg timestamp="20240604 16:53:15.121" level="INFO">POST Response : url=http://localhost:8080/brightness 
  status=200, reason=OK 
- headers={'Date': 'Tue, 04 Jun 2024 11:59:21 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '17', 'Content-Type': 'text/html; charset=UTF-8'} 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '17', 'Content-Type': 'text/html; charset=UTF-8'} 
  body={"success": true} 
  </msg>
-<msg timestamp="20240604 15:59:21.893" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20240604 15:59:21.890" endtime="20240604 15:59:21.893"/>
+<msg timestamp="20240604 16:53:15.121" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.117" endtime="20240604 16:53:15.121"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Data from server: ${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.893" endtime="20240604 15:59:21.893"/>
+<status status="PASS" starttime="20240604 16:53:15.121" endtime="20240604 16:53:15.121"/>
 </kw>
 <kw name="Convert To String" library="BuiltIn">
 <var>${status}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20240604 15:59:21.894" level="INFO">${status} = 200</msg>
-<status status="PASS" starttime="20240604 15:59:21.894" endtime="20240604 15:59:21.894"/>
+<msg timestamp="20240604 16:53:15.122" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.121" endtime="20240604 16:53:15.122"/>
 </kw>
 <kw name="Set Variable" library="BuiltIn">
 <var>${content}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<msg timestamp="20240604 15:59:21.894" level="INFO">${content} = {'success': True}</msg>
-<status status="PASS" starttime="20240604 15:59:21.894" endtime="20240604 15:59:21.894"/>
+<msg timestamp="20240604 16:53:15.122" level="INFO">${content} = {'success': True}</msg>
+<status status="PASS" starttime="20240604 16:53:15.122" endtime="20240604 16:53:15.122"/>
 </kw>
+<kw name="Check Succession Of API" library="validation">
+<arg>${content}</arg>
+<arg>${status}</arg>
 <kw name="Should Be True" library="BuiltIn">
-<arg>${status}==200</arg>
+<arg>${status_code}==200</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.894" endtime="20240604 15:59:21.895"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>Content is: ${content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.895" endtime="20240604 15:59:21.895"/>
+<status status="PASS" starttime="20240604 16:53:15.123" endtime="20240604 16:53:15.123"/>
 </kw>
 <kw name="Dictionary Should Contain Key" library="Collections">
-<arg>${content}</arg>
+<arg>${json_value}</arg>
 <arg>success</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" starttime="20240604 15:59:21.895" endtime="20240604 15:59:21.895"/>
+<status status="PASS" starttime="20240604 16:53:15.123" endtime="20240604 16:53:15.123"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${value}</var>
+<arg>${json_value}</arg>
+<arg>success</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20240604 16:53:15.123" level="INFO">${value} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.123" endtime="20240604 16:53:15.123"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${is_expected_type}</var>
+<arg>isinstance(${value}, bool)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240604 16:53:15.123" level="INFO">${is_expected_type} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.123" endtime="20240604 16:53:15.123"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>Success value: ${content}[success]</arg>
+<arg>Is expected type: ${is_expected_type}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20240604 15:59:21.895" endtime="20240604 15:59:21.895"/>
+<status status="PASS" starttime="20240604 16:53:15.123" endtime="20240604 16:53:15.124"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${is_expected_type}==True</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.124" endtime="20240604 16:53:15.124"/>
+</kw>
+<status status="PASS" starttime="20240604 16:53:15.122" endtime="20240604 16:53:15.124"/>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <arg>${content}[success]==True</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" starttime="20240604 15:59:21.895" endtime="20240604 15:59:21.896"/>
+<status status="PASS" starttime="20240604 16:53:15.124" endtime="20240604 16:53:15.124"/>
 </kw>
-<status status="PASS" starttime="20240604 15:59:21.883" endtime="20240604 15:59:21.896"/>
+<status status="PASS" starttime="20240604 16:53:15.110" endtime="20240604 16:53:15.124"/>
 </test>
-<status status="PASS" starttime="20240604 15:59:21.787" endtime="20240604 15:59:21.896"/>
+<test id="s1-s1-t5" name="Set Color of Connected Devce" line="50">
+<kw name="Setup Connection Via Ip" library="setup" type="SETUP">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${req_body}</var>
+<arg>ip=${target_device_ip}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240604 16:53:15.125" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<status status="PASS" starttime="20240604 16:53:15.125" endtime="20240604 16:53:15.125"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${Base_URL}/connect</arg>
+<arg>json=${req_body}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20240604 16:53:15.128" level="INFO">POST Request : url=http://localhost:8080/connect 
+ path_url=/connect 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '24', 'Content-Type': 'application/json'} 
+ body=b'{"ip": "192.168.100.10"}' 
+ </msg>
+<msg timestamp="20240604 16:53:15.128" level="INFO">POST Response : url=http://localhost:8080/connect 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '18', 'Content-Type': 'text/html; charset=UTF-8'} 
+ body={"success": false} 
+ </msg>
+<msg timestamp="20240604 16:53:15.128" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.125" endtime="20240604 16:53:15.128"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Result from api is: ${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240604 16:53:15.128" endtime="20240604 16:53:15.128"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Data from api is: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240604 16:53:15.128" endtime="20240604 16:53:15.128"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240604 16:53:15.129" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.128" endtime="20240604 16:53:15.129"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${content}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240604 16:53:15.129" level="INFO">${content} = {'success': False}</msg>
+<status status="PASS" starttime="20240604 16:53:15.129" endtime="20240604 16:53:15.129"/>
+</kw>
+<kw name="Check Succession Of API" library="validation">
+<arg>${content}</arg>
+<arg>${status}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${status_code}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.129" endtime="20240604 16:53:15.130"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${json_value}</arg>
+<arg>success</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240604 16:53:15.130" endtime="20240604 16:53:15.130"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${value}</var>
+<arg>${json_value}</arg>
+<arg>success</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20240604 16:53:15.130" level="INFO">${value} = False</msg>
+<status status="PASS" starttime="20240604 16:53:15.130" endtime="20240604 16:53:15.130"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${is_expected_type}</var>
+<arg>isinstance(${value}, bool)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240604 16:53:15.130" level="INFO">${is_expected_type} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.130" endtime="20240604 16:53:15.130"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Is expected type: ${is_expected_type}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240604 16:53:15.130" endtime="20240604 16:53:15.130"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${is_expected_type}==True</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.130" endtime="20240604 16:53:15.131"/>
+</kw>
+<status status="PASS" starttime="20240604 16:53:15.129" endtime="20240604 16:53:15.131"/>
+</kw>
+<status status="PASS" starttime="20240604 16:53:15.125" endtime="20240604 16:53:15.131"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Connection is established for test 5</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240604 16:53:15.131" endtime="20240604 16:53:15.131"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${req_body}</var>
+<arg>color=#00ff00</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240604 16:53:15.131" level="INFO">${req_body} = {'color': '#00ff00'}</msg>
+<status status="PASS" starttime="20240604 16:53:15.131" endtime="20240604 16:53:15.131"/>
+</kw>
+<kw name="POST" library="RequestsLibrary">
+<var>${response}</var>
+<arg>${Base_URL}/color</arg>
+<arg>data=${req_body}</arg>
+<doc>Sends a POST request.</doc>
+<msg timestamp="20240604 16:53:15.135" level="INFO">POST Request : url=http://localhost:8080/color 
+ path_url=/color 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '15', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=color=%2300ff00 
+ </msg>
+<msg timestamp="20240604 16:53:15.135" level="INFO">POST Response : url=http://localhost:8080/color 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 04 Jun 2024 12:53:15 GMT', 'Server': 'WSGIServer/0.2 CPython/3.7.9', 'Content-Length': '17', 'Content-Type': 'text/html; charset=UTF-8'} 
+ body={"success": true} 
+ </msg>
+<msg timestamp="20240604 16:53:15.135" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240604 16:53:15.131" endtime="20240604 16:53:15.135"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Data from server: ${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240604 16:53:15.135" endtime="20240604 16:53:15.135"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20240604 16:53:15.136" level="INFO">${status} = 200</msg>
+<status status="PASS" starttime="20240604 16:53:15.135" endtime="20240604 16:53:15.136"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${content}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240604 16:53:15.137" level="INFO">${content} = {'success': True}</msg>
+<status status="PASS" starttime="20240604 16:53:15.136" endtime="20240604 16:53:15.137"/>
+</kw>
+<kw name="Check Succession Of API" library="validation">
+<arg>${content}</arg>
+<arg>${status}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${status_code}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.139" endtime="20240604 16:53:15.140"/>
+</kw>
+<kw name="Dictionary Should Contain Key" library="Collections">
+<arg>${json_value}</arg>
+<arg>success</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" starttime="20240604 16:53:15.140" endtime="20240604 16:53:15.142"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${value}</var>
+<arg>${json_value}</arg>
+<arg>success</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20240604 16:53:15.142" level="INFO">${value} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.142" endtime="20240604 16:53:15.142"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${is_expected_type}</var>
+<arg>isinstance(${value}, bool)</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240604 16:53:15.143" level="INFO">${is_expected_type} = True</msg>
+<status status="PASS" starttime="20240604 16:53:15.142" endtime="20240604 16:53:15.143"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Is expected type: ${is_expected_type}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20240604 16:53:15.143" endtime="20240604 16:53:15.143"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${is_expected_type}==True</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.143" endtime="20240604 16:53:15.143"/>
+</kw>
+<status status="PASS" starttime="20240604 16:53:15.138" endtime="20240604 16:53:15.143"/>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<arg>${content}[success]==True</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20240604 16:53:15.144" endtime="20240604 16:53:15.144"/>
+</kw>
+<status status="PASS" starttime="20240604 16:53:15.124" endtime="20240604 16:53:15.144"/>
+</test>
+<status status="PASS" starttime="20240604 16:53:15.003" endtime="20240604 16:53:15.144"/>
 </suite>
-<status status="PASS" starttime="20240604 15:59:21.776" endtime="20240604 15:59:21.897"/>
+<status status="PASS" starttime="20240604 16:53:14.992" endtime="20240604 16:53:15.145"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="4" fail="0" skip="0" id="s1" name="Lightbulb-Testing">Lightbulb-Testing</stat>
-<stat pass="4" fail="0" skip="0" id="s1-s1" name="Learn">Lightbulb-Testing.Learn</stat>
+<stat pass="5" fail="0" skip="0" id="s1" name="Lightbulb-Testing">Lightbulb-Testing</stat>
+<stat pass="5" fail="0" skip="0" id="s1-s1" name="Learn">Lightbulb-Testing.Learn</stat>
 </suite>
 </statistics>
 <errors>

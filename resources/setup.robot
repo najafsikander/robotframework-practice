@@ -15,5 +15,6 @@ Setup Connection Via Ip
     ${response}     POST    ${Base_URL}/connect     json=${req_body}
     Log To Console    Result from api is: ${response}
     Log To Console    Data from api is: ${response.content}
+    ${status}       Convert To String    ${response.status_code}
     ${content}  Set Variable    ${response.json()}
-    Check Succession Of API     ${content}
+    Check Succession Of API     ${content}      ${status}

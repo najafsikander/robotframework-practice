@@ -44,8 +44,16 @@ Set Brightness of Connected Device
     Log To Console    Data from server: ${response}
     ${status}       Convert To String    ${response.status_code}
     ${content}      Set Variable    ${response.json()}
-    Should Be True    ${status}==200
-    Log To Console    Content is: ${content}
-    Dictionary Should Contain Key    ${content}    success
-    Log To Console    Success value: ${content}[success]
+    Check Succession Of API    ${content}    ${status}
+    Should Be True    ${content}[success]==True
+
+Set Color of Connected Devce
+    [Setup]     Setup Connection Via Ip
+    Log To Console    Connection is established for test 5
+    ${req_body}     Create Dictionary       color=#00ff00
+    ${response}      POST    ${Base_URL}/color      data=${req_body}
+    Log To Console    Data from server: ${response.json()}
+    ${status}       Convert To String    ${response.status_code}
+    ${content}      Set Variable    ${response.json()}
+    Check Succession Of API    ${content}    ${status}
     Should Be True    ${content}[success]==True
