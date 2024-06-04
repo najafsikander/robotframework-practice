@@ -1,49 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-05-29T13:11:18.600776" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.9.6 on darwin)" generated="2024-06-04T15:39:12.785376" rpa="false" schemaversion="5">
 <suite id="s1" name="Learn" source="/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot">
-<test id="s1-t1" name="Connect To A Device" line="23">
+<test id="s1-t1" name="Get All Devices" line="13">
+<kw name="GET">
+<msg time="2024-06-04T15:39:12.812032" level="FAIL">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time</msg>
+<var>${response}</var>
+<arg>${Base_URL}/devices</arg>
+<status status="FAIL" start="2024-06-04T15:39:12.811932" elapsed="0.000163">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time</status>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<var>${status}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812207" elapsed="0.000062"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${content}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812345" elapsed="0.000049"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Status is: ${status}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812460" elapsed="0.000041"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Content is: ${content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812564" elapsed="0.000037"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${status}==200</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812662" elapsed="0.000039"/>
+</kw>
+<kw name="Validate Device List" owner="validation">
+<arg>${content}</arg>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812831" elapsed="0.000048"/>
+</kw>
+<kw name="Validate Device Name" owner="validation">
+<arg>${content}</arg>
+<arg>bulb1</arg>
+<status status="NOT RUN" start="2024-06-04T15:39:12.812975" elapsed="0.000047"/>
+</kw>
+<kw name="Validate Device Name" owner="validation">
+<arg>${content}</arg>
+<arg>bulb2</arg>
+<status status="NOT RUN" start="2024-06-04T15:39:12.813113" elapsed="0.000044"/>
+</kw>
+<status status="FAIL" start="2024-06-04T15:39:12.811054" elapsed="0.002196">No keyword with name 'GET' found. Did you mean:
+    BuiltIn.Get Time</status>
+</test>
+<test id="s1-t2" name="Connect To A Device" line="24">
+<kw name="Setup Connection Via Ip" owner="setup">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2024-05-29T13:11:18.631203" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<msg time="2024-06-04T15:39:12.814157" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
 <var>${req_body}</var>
 <arg>ip=${target_device_ip}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="PASS" start="2024-05-29T13:11:18.630610" elapsed="0.000752"/>
+<status status="PASS" start="2024-06-04T15:39:12.813884" elapsed="0.000319"/>
 </kw>
 <kw name="POST">
-<msg time="2024-05-29T13:11:18.632908" level="FAIL">No keyword with name 'POST' found.</msg>
+<msg time="2024-06-04T15:39:12.814714" level="FAIL">No keyword with name 'POST' found.</msg>
 <var>${response}</var>
 <arg>${Base_URL}/connect</arg>
 <arg>json=${req_body}</arg>
-<status status="FAIL" start="2024-05-29T13:11:18.632706" elapsed="0.000299">No keyword with name 'POST' found.</status>
+<status status="FAIL" start="2024-06-04T15:39:12.814659" elapsed="0.000094">No keyword with name 'POST' found.</status>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>Result from api is:</arg>
-<arg>${response}</arg>
+<arg>Result from api is: ${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2024-05-29T13:11:18.633162" elapsed="0.000061"/>
+<status status="NOT RUN" start="2024-06-04T15:39:12.814823" elapsed="0.000036"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>Data from api is:</arg>
-<arg>${response.content}</arg>
+<arg>Data from api is: ${response.content}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="NOT RUN" start="2024-05-29T13:11:18.633297" elapsed="0.000045"/>
+<status status="NOT RUN" start="2024-06-04T15:39:12.814917" elapsed="0.000036"/>
 </kw>
-<status status="FAIL" start="2024-05-29T13:11:18.629981" elapsed="0.003500">No keyword with name 'POST' found.</status>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${content}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.815010" elapsed="0.000035"/>
+</kw>
+<kw name="Check Succession Of API" owner="validation">
+<arg>${content}</arg>
+<status status="NOT RUN" start="2024-06-04T15:39:12.815127" elapsed="0.000038"/>
+</kw>
+<status status="FAIL" start="2024-06-04T15:39:12.813685" elapsed="0.001541">No keyword with name 'POST' found.</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Connection is established</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.815290" elapsed="0.000036"/>
+</kw>
+<status status="FAIL" start="2024-06-04T15:39:12.813412" elapsed="0.001990">No keyword with name 'POST' found.</status>
 </test>
-<status status="FAIL" start="2024-05-29T13:11:18.601811" elapsed="0.031970"/>
+<test id="s1-t3" name="Check State of Connected Device" line="28">
+<kw name="Setup Connection Via Ip" owner="setup" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-06-04T15:39:12.816161" level="INFO">${req_body} = {'ip': '192.168.100.10'}</msg>
+<var>${req_body}</var>
+<arg>ip=${target_device_ip}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-06-04T15:39:12.815995" elapsed="0.000207"/>
+</kw>
+<kw name="POST">
+<msg time="2024-06-04T15:39:12.816728" level="FAIL">No keyword with name 'POST' found.</msg>
+<var>${response}</var>
+<arg>${Base_URL}/connect</arg>
+<arg>json=${req_body}</arg>
+<status status="FAIL" start="2024-06-04T15:39:12.816677" elapsed="0.000088">No keyword with name 'POST' found.</status>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Result from api is: ${response}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.816839" elapsed="0.000036"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Data from api is: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.816935" elapsed="0.000034"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${content}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-06-04T15:39:12.817030" elapsed="0.000037"/>
+</kw>
+<kw name="Check Succession Of API" owner="validation">
+<arg>${content}</arg>
+<status status="NOT RUN" start="2024-06-04T15:39:12.817158" elapsed="0.000040"/>
+</kw>
+<status status="FAIL" start="2024-06-04T15:39:12.815823" elapsed="0.001435">No keyword with name 'POST' found.</status>
+</kw>
+<status status="FAIL" start="2024-06-04T15:39:12.815607" elapsed="0.001734">Setup failed:
+No keyword with name 'POST' found.</status>
+</test>
+<status status="FAIL" start="2024-06-04T15:39:12.786428" elapsed="0.031180"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="0" fail="3" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Learn">Learn</stat>
+<stat pass="0" fail="3" skip="0" id="s1" name="Learn">Learn</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2024-05-29T13:11:18.615036" level="ERROR">Error in file '/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+<msg time="2024-06-04T15:39:12.799669" level="ERROR">Error in file '/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/learn.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  /Users/zonedelivery/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/robotframework-intellij/lib/robotframework_debug_adapter
+  /Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing
+  /Users/zonedelivery/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/robotframework-intellij/lib
+  /Users/zonedelivery/Library/Application Support/JetBrains/PyCharmCE2024.1/plugins/robotframework-intellij/lib/robotframework_ls/vendored
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python39.zip
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/lib-dynload
+  /Users/zonedelivery/Library/Python/3.9/lib/python/site-packages
+  /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/site-packages</msg>
+<msg time="2024-06-04T15:39:12.809922" level="ERROR">Error in file '/Users/zonedelivery/Documents/robot-testing/lightbulb-testing/lightbulb-testing/resources/setup.robot' on line 2: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
 Traceback (most recent call last):
   None
 PYTHONPATH:
